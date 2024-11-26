@@ -34,32 +34,32 @@ Each D flip-flop in the circuit has a Data (D) input, a Clock (CLK) input, and a
 Developed by: sharika.R
 RegisterNumber: 212223230204
 ```
-module ex09( input clk, rst_n, input t, 
-output reg q, 
-output q_bar 
-); 
-always@(posedge clk) 
-begin // for synchronous reset 
- //WRITE THE CONDITION OF TOGGLE FLIPFLOP HERE WITH RESET AND 
- //IMPLEMENT THE T LOGIC BY CONDITIONAL OPERATOR 
-if(!rst_n) 
-q<=0; 
-else 
-begin 
-q<=(t?~q:q); 
-end 
-end 
-assign q_bar = ~q; 
+module EXP10DE(clock, clear, A, E);
+input clock, clear, A;
+output reg E;
+reg B, C, D;
+always @(posedge clock or negedge clear)
+begin
+if (!clear) begin B=0; C=0; D=0; E=0; end
+else begin
+E = D;
+D = C;
+C = B;
+B = A;
+end
+end
 endmodule
 ```
 
 */
 
 **RTL LOGIC FOR SISO Shift Register**
-![Screenshot 2024-11-10 211239](https://github.com/user-attachments/assets/e6682d6c-683e-4ccd-b126-eefe02ed0998)
+![Screenshot 2024-11-23 142008](https://github.com/user-attachments/assets/6cd79f5b-d061-4a35-87c4-5f6129c31153)
+
 
 **TIMING DIGRAMS FOR SISO Shift Register**
-![Screenshot 2024-11-10 211331](https://github.com/user-attachments/assets/80b9a835-2143-44aa-a984-30e12798d1dd)
+![Screenshot 2024-11-26 113738](https://github.com/user-attachments/assets/679da43d-acab-4fb4-95ef-b20bc2688f9e)
+
 
 **RESULTS**
-Hence, T flipflop using verilog and validating their functionality using their functional tables is implemented.
+ Thus the program excecuted successfully.
